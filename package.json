@@ -1,0 +1,35 @@
+{
+  "name": "react-native-amplify-liveness",
+  "version": "0.1.0",
+  "description": "React Native bridge for Amplify UI Face Liveness",
+  "main": "lib/commonjs/index.js",
+  "module": "lib/module/index.js",
+  "types": "lib/typescript/index.d.ts",
+  "react-native": "src/index.ts",
+  "source": "src/index.ts",
+  "files": [
+    "src",
+    "lib",
+    "android",
+    "ios",
+    "*.podspec",
+    "react-native.config.js",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-native": ">=0.73.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-native": "^0.76.0",
+    "react": "18.3.1",
+    "react-native": "0.76.0",
+    "typescript": "^5.6.3"
+  },
+  "license": "MIT"
+}
