@@ -80,7 +80,23 @@ class AmplifyLiveness: NSObject {
 
     DispatchQueue.main.async {
       #if canImport(FaceLiveness)
-      guard let root = UIApplication.shared.delegate?.window??.rootViewController else {
+      // Robust way to find the root view controller in Scene-based apps
+      var rootViewController: UIViewController?
+      if #available(iOS 13.0, *) {
+          rootViewController = UIApplication.shared.connectedScenes
+              .filter { $0.activationState == .foregroundActive }
+              .compactMap { $0 as? UIWindowScene }
+              .first?.windows
+              .filter { $0.isKeyWindow }
+              .first?.rootViewController
+      }
+      
+      // Fallback
+      if rootViewController == nil {
+          rootViewController = UIApplication.shared.delegate?.window??.rootViewController
+      }
+
+      guard let root = rootViewController else {
         reject("E_NO_ROOT", "Unable to find root view controller.", nil)
         return
       }
