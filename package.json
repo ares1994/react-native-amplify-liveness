@@ -25,11 +25,11 @@
     "react-native": ">=0.73.0"
   },
   "devDependencies": {
-    "@types/react": "*/*",
-    "@types/react-native": "*/*",
-    "react": "*/*",
-    "react-native": "*/*",
-    "typescript": "*/*"
+    "@types/react": "*",
+    "@types/react-native": "*",
+    "react": "*",
+    "react-native": "*",
+    "typescript": "*"
   },
   "license": "MIT"
 }
