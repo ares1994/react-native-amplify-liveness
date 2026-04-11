@@ -115,19 +115,23 @@ class AmplifyLiveness: NSObject {
           region: region,
           credentialsProvider: provider,
           onComplete: {
-            resolve([
-              "sessionId": sessionId,
-              "status": "completed"
-            ])
-            root.dismiss(animated: true)
+            DispatchQueue.main.async {
+              resolve([
+                "sessionId": sessionId,
+                "status": "completed"
+              ])
+              root.dismiss(animated: true)
+            }
           },
           onError: { error in
-            resolve([
-              "sessionId": sessionId,
-              "status": "error",
-              "errorMessage": error
-            ])
-            root.dismiss(animated: true)
+            DispatchQueue.main.async {
+              resolve([
+                "sessionId": sessionId,
+                "status": "error",
+                "errorMessage": error
+              ])
+              root.dismiss(animated: true)
+            }
           }
         )
       )
