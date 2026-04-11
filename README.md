@@ -2,7 +2,7 @@
 
 React Native bridge for **Amplify UI Face Liveness**.
 
-- **Android SDK**: `com.amplifyframework.ui:liveness:1.5.0`
+- **Android SDK**: `com.amplifyframework.ui:liveness:1.9.0`
 - **iOS SDK**: `AmplifyUI Liveness` (via SPM)
 - **Compatibility**: React Native 0.73+
 
@@ -98,8 +98,28 @@ Add the camera usage description to `ios/YourApp/Info.plist`:
    <uses-permission android:name="android.permission.CAMERA" />
    ```
 2. **Min SDK**: Ensure `minSdkVersion` is at least **24** in `android/build.gradle`.
+3. **Core Library Desugaring**: Amplify UI Liveness requires Java 8+ API support. 
+   - Ensure the following is added to `android/app/build.gradle` e.g:
+     ```gradle
+     android {
+         compileOptions {
+             // Core library desugaring requires Java 8 or higher
+             sourceCompatibility JavaVersion.VERSION_17
+             targetCompatibility JavaVersion.VERSION_17
 
----
+             // Enable the magic flag
+             coreLibraryDesugaringEnabled true
+         }
+
+         kotlinOptions {
+             jvmTarget = JavaVersion.VERSION_17
+         }
+     }
+
+     dependencies {
+         coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5"
+     }
+     ```
 
 ## Example Project
 A fully configured example can be found in the `example/` directory.

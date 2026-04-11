@@ -5,12 +5,14 @@ buildscript {
   }
   dependencies {
     classpath "com.android.tools.build:gradle:8.1.0"
-    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin"
+    classpath("org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.0")
   }
 }
 
 apply plugin: "com.android.library"
 apply plugin: "org.jetbrains.kotlin.android"
+apply plugin: "org.jetbrains.kotlin.plugin.compose"
 
 android {
   namespace "com.rnamplifyliveness"
@@ -25,9 +27,6 @@ android {
     compose true
   }
 
-  composeOptions {
-    kotlinCompilerExtensionVersion "1.5.14"
-  }
 
   compileOptions {
     coreLibraryDesugaringEnabled true
@@ -49,6 +48,6 @@ dependencies {
   implementation "com.facebook.react:react-native:+"
   implementation "androidx.activity:activity-compose:1.8.2"
   implementation "androidx.compose.material3:material3:1.1.2"
-  implementation "com.amplifyframework.ui:liveness:1.5.0"
-  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+  implementation "com.amplifyframework.ui:liveness:1.9.0"
+  coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.5"
 }
